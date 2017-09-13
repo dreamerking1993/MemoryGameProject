@@ -40,17 +40,21 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
+    /*the following background property gives the appearance of the cards in a box, otherwise there would be only cards*/
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
+    /*causes shadow at the right side of the box */
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    /*the display:flex turns it into a grid otherwise it would only be a really long column of cards*/
     display: flex;
     flex-wrap: wrap;
+    /*this(justify-content:..) is the reason for the space between the cards*/
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
 }
-
+/*all cards will be revealed if cursor: default; background: #02ccba; font-size: 33px. Because the condition is not met, 13 out of 16 cards are hidden*/
 .deck .card {
     height: 125px;
     width: 125px;
@@ -62,19 +66,20 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    /*causes cards to have shadow*/
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
-
+/*this is how the clicked card should open, look at the bolt card */
 .deck .card.open {
     transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
 }
-
+/*the bolt card shows because the font is not zero*/
 .deck .card.show {
     font-size: 33px;
 }
-
+/*this is why the two anchor cards are open*/
 .deck .card.match {
     cursor: default;
     background: #02ccba;
@@ -94,15 +99,15 @@ h1 {
 .score-panel .stars {
     margin: 0;
     padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+    display: inline-block; /*the 3 stars and "3Moves" is in the same line because of this*/
+    margin: 0 5px 0 0; /*responsible for the gap between the 3 stars and "3Moves"*/
 }
 
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
-
+/*responsible for the restart sign at the top right of the deck*/
 .score-panel .restart {
     float: right;
     cursor: pointer;
