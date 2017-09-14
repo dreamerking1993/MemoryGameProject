@@ -1,71 +1,37 @@
-/*
- * Create a list that holds all of your cards
- */
-/* 
-var deckArray = [];
-$('.card').each(function(){
-deckArray.push($(this));
+var aaa = []; //array of the cards that are open
+var bbb = []; //array of the cards that are matched with the open card
+var move = 0;
+function one() {
+$('.deck .card').on('click', function() {    //when clicked
+    move = move+1;
+    //card should perform horizontal flip before opening, the interactivity will be added at last
+    $(this).addClass('match'); //the card opens
+    aaa.push($(this).children().attr('class')); //opened card is pushed to array aaa
 });
-$('.card.match').each(function(){
-deckArray.push($(this));
-});
-deckArray.push($('.card.match.open.show'));
+two(); //call function two
+};
 
-$('.restart').on('click',function(){
-	shuffle(deckArray);
-});
-*/
-var myClass = [];
-$('.deck .card').on('click', function() {    
-    //$(this).css('background', '#02ccba');
-    myClass.push($(this).children().attr('class'));
-    if (myClass.length<8) {
-    	    $(this).addClass('match'); 
+function two() {
+$('.deck .card').on('click', function() { //when clicked
+    move = move+1;
+    bbb.push($(this).children().attr('class')); //card to be matched is pushed to array bbb
+    //matching the cards
+    if (aaa[aaa.length-1]===bbb[bbb.length-1]) { //if the cards match
+        //both cards should be flipped before opening the hidden card, the interactivity will be added at last
+            $(this).addClass('match'); //the card opens
+            one(); //then function one gets called
     }
-    /*
-	for (var i == 0; i<myClass.length; i++) {
-		if (myClass.length > 0) {
-			if (myClass[i]!==myClass[i-1]) {
-				$(this.removeClass('match'));
-			}
-		}
-	}*/
-});
-
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-/*
-
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+    else { //if the cards do not match
+        //reveal both cards for 3 secs while both have red background color
+        //then hide both cards
+        one(); //then call function one so that the user can click a card again
     }
 
-    return array;
-}
 
+});
+};
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+one(); //the program opens with function one being called
+
+//two functionalities left to be added (1) the array is resuffled at the beginning, and everytime user presses replay button all opened cards close and the deck is resuffled
+//(2) when all cards are matched "YOU WIN" is displayed
