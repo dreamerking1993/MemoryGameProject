@@ -15,11 +15,24 @@ $('.restart').on('click',function(){
 	shuffle(deckArray);
 });
 */
-
+var myClass = [];
 $('.deck .card').on('click', function() {    
     //$(this).css('background', '#02ccba');
-    $(this).addClass('match'); 
+    myClass.push($(this).children().attr('class'));
+    if (myClass.length<8) {
+    	    $(this).addClass('match'); 
+    }
+    /*
+	for (var i == 0; i<myClass.length; i++) {
+		if (myClass.length > 0) {
+			if (myClass[i]!==myClass[i-1]) {
+				$(this.removeClass('match'));
+			}
+		}
+	}*/
 });
+
+
 
 /*
  * Display the cards on the page
