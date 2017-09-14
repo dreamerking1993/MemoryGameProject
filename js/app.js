@@ -1,7 +1,25 @@
 /*
  * Create a list that holds all of your cards
  */
+/* 
+var deckArray = [];
+$('.card').each(function(){
+deckArray.push($(this));
+});
+$('.card.match').each(function(){
+deckArray.push($(this));
+});
+deckArray.push($('.card.match.open.show'));
 
+$('.restart').on('click',function(){
+	shuffle(deckArray);
+});
+*/
+
+$('.deck .card').on('click', function() {    
+    //$(this).css('background', '#02ccba');
+    $(this).addClass('match'); 
+});
 
 /*
  * Display the cards on the page
@@ -11,6 +29,8 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+/*
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
