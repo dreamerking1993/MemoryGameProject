@@ -1,20 +1,29 @@
-# Memory Game Project
+## GOAL:
+To create a memory game as a part of Udacity Front end Nanodegree
 
-## Table of Contents
+### How to load the game:
+1) Downoad the zip file
+2) Open index.html with suitable browser
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+### The goal of the game:
+The job is to match all 8 pairs of cards in a box where 16 cards are randomly arranged.
 
-## Instructions
+### How to play the game:
+1)First **click** on any card and the symbol in the card gets displayed.
+2)**On clicking the second card** there are two scenarios:
+- _First, if the card matches the first card, both cards get displayed now 		following the similar process 7 more pairs should be matched to win the 		game._
+- _Second, if the card does not match the second card, the card is displayed 		for a second and both cards are hidden again._
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
-To get started, open `js/app.js` and start building out the app's functionality
+### Tools Used:
+- HTML
+- CSS
+- Javascript
+- Jquerry
+- Bootstrap for the cards, stars and reload symbols
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+### Resources used to complete the project:
+1)Mozilla Developer's Network
+2)Stackoverflow.com
+3)w3schools.com

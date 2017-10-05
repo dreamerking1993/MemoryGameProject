@@ -2,11 +2,13 @@ html {
     box-sizing: border-box;
 }
 
+
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
+
 
 html,
 body {
@@ -16,22 +18,29 @@ body {
     padding: 0;
 }
 
+
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern */
+    
     font-family: 'Coda', cursive;
 }
 
-.container {
+
+.container,
+.winContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
+
 
 /*
  * Styles for the deck of cards
@@ -39,22 +48,23 @@ h1 {
 
 .deck {
     width: 660px;
-    min-height: 680px;
-    /*the following background property gives the appearance of the cards in a box, otherwise there would be only cards*/
+    height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
+    /*32px padding*/
     border-radius: 10px;
-    /*causes shadow at the right side of the box */
+    /*curvy edge of the big box */
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    /*the display:flex turns it into a grid otherwise it would only be a really long column of cards*/
+    /*big box shadow*/
     display: flex;
     flex-wrap: wrap;
-    /*this(justify-content:..) is the reason for the space between the cards*/
     justify-content: space-between;
+    /*responsible for the horizontal gap between cards*/
     align-items: center;
     margin: 0 0 3em;
 }
-/*all cards will be revealed if cursor: default; background: #02ccba; font-size: 33px. Because the condition is not met, 13 out of 16 cards are hidden*/
+
+
 .deck .card {
     height: 125px;
     width: 125px;
@@ -65,26 +75,35 @@ h1 {
     cursor: pointer;
     display: flex;
     justify-content: center;
+    /*responsible for the text appearing when clicked to be at center*/
     align-items: center;
-    /*causes cards to have shadow*/
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
-/*this is how the clicked card should open, look at the bolt card */
+
+
 .deck .card.open {
     transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
 }
-/*the bolt card shows because the font is not zero*/
+
+
 .deck .card.show {
     font-size: 33px;
 }
-/*this is why the two anchor cards are open*/
+
+
 .deck .card.match {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
 }
+
+
+.deck .card.unmatched {
+    background: #b30000;
+}
+
 
 /*
  * Styles for the Score Panel
@@ -96,19 +115,106 @@ h1 {
     margin-bottom: 10px;
 }
 
+
 .score-panel .stars {
     margin: 0;
     padding: 0;
-    display: inline-block; /*the 3 stars and "3Moves" is in the same line because of this*/
-    margin: 0 5px 0 0; /*responsible for the gap between the 3 stars and "3Moves"*/
+    display: inline-block;
+    margin: 0 5px 0 0;
 }
+
 
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
-/*responsible for the restart sign at the top right of the deck*/
+
+
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+
+.winModal {
+    float: center;
+    width: 660px;
+    height: 300px;
+    background: #02ccba;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+
+button {
+    background-color: #02ccba;
+}
+
+
+/*Making the game responsive*/
+
+@media only screen and (max-width: 1250px) and (min-width: 800px) {
+    .deck {
+        width: 560px;
+        height: 570px;
+    }
+    .deck .card {
+        height: 110px;
+        width: 110px;
+    }
+}
+
+
+@media only screen and (max-width: 800px) and (min-width: 550px) {
+    .deck {
+        width: 460px;
+        height: 470px;
+    }
+    .deck .card {
+        height: 90px;
+        width: 90px;
+    }
+    .winModal {
+        width: 460px;
+        height: 300px;
+    }
+}
+
+
+@media only screen and (max-width: 550px) and (min-width: 400px) {
+    .deck {
+        width: 380px;
+        height: 385px;
+    }
+    .deck .card {
+        height: 70px;
+        width: 70px;
+    }
+    .winModal {
+        width: 330px;
+        height: 330px;
+    }
+}
+
+
+@media only screen and (max-width: 400px) and (min-width: 350px) {
+    .deck {
+        width: 330px;
+        height: 340px;
+        padding: 16px;
+    }
+    .deck .card {
+        height: 60px;
+        width: 60px;
+    }
+    .winModal {
+        width: 290px;
+        height: 330px;
+    }
 }
